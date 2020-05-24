@@ -1,26 +1,98 @@
-var cbLocationElement = document.getElementById('cbLocation');
+// const data = require('./public/data.json');
 
-axios.get('https://apidosetoreletrico.com.br/api/energy-providers')
-    .then(function (response) {
+// console.log(data);
+
+var cbLocationElement = document.getElementById('cbLocation');
+var inputPowerEletric = document.getElementById('inputPowerEletric');
+var inputAmountDevices = document.getElementById('inputAmountDevices');
+var inputUseDuration = document.getElementById('inputUseDuration');
+var inputPeriod = document.getElementById('inputPeriod');
+
+var resultText = document.getElementById('resultText');
+var resultTable = document.getElementsByTagName('tbody')[0];
+
+var countTable = 1;
+
+axios.get('./public/data.json').then(
+    function (response) {
         // console.log(response.data);
-        var locations = response.data;
-        locations.forEach(element => {
+        data = response.data;
+        data.forEach(element => {
+            // console.log(element)
             var locationItem = document.createElement('option');
-            locationItem.setAttribute('id', '' + element.id + '');
-            locationItem.setAttribute('onselect', 'printId(' + element.id + ')');
-            var locationText = document.createTextNode(element.name);
+            locationItem.setAttribute('value', element.ideTarifaFornecimento);
+            var locationText = document.createTextNode(element.sigDistribuidora);
             locationItem.appendChild(locationText);
             cbLocationElement.appendChild(locationItem);
         });
-    })
-    .catch(function (error) {
+    }
+).catch(
+    function (error) {
         console.warn(error);
-    });
+        alert("Ocorreu um erro inesperdo! Recarrega e página e tente novamente.")
+    }
+);
 
-function printId(id) {
-    console.log(id);
+
+function calculate(id) {
+    // console.log(id)
+    // var location = inputPowerEletric.value;
+    var powerEletric = inputPowerEletric.value;
+    var amountDevices = inputAmountDevices.value;
+    var useDuration = inputUseDuration.value;
+    var period = inputPeriod.value;
+    var tariff = null;
+
+    data.forEach(
+        element => {
+            if (element.ideTarifaFornecimento == id) {
+                tariff = element.vlrTotaTRFConvencional;
+                return;
+            }
+        }
+    );
+
+    var kw = (amountDevices * powerEletric * useDuration * period) / 1000;
+    console.log(kw + " kw");
+
+    cost = kw * tariff;
+
+    var costFormatted = cost.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+
+
+    resultText.textContent = "";
+
+    var costText = document.createTextNode(costFormatted);
+    resultText.appendChild(costText);
+    console.log(cost);
+
+
+
+    var resultRow = document.createElement('tr');
+
+    var tableCount = document.createElement('th');
+    var tableCountText = document.createTextNode(countTable);
+    tableCount.appendChild(tableCountText);
+
+    var resultName = document.createElement('th');
+    var resultNameText = document.createTextNode("-");
+    resultName.appendChild(resultNameText);
+
+    var resultElectricalConsumption = document.createElement('th');
+    var resultElectricalConsumptionText = document.createTextNode(kw + " kw");
+    resultElectricalConsumption.appendChild(resultElectricalConsumptionText);
+
+    var resultCost = document.createElement('th');
+    resultCost.appendChild(costText);
+
+    resultRow.appendChild(tableCount);
+    resultRow.appendChild(resultName);
+    resultRow.appendChild(resultElectricalConsumption);
+    resultRow.appendChild(resultCost);
+
+    resultTable.appendChild(resultRow);
+
+    countTable++;
+
 }
-
-
-
 
