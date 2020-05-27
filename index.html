@@ -8,65 +8,178 @@
 </head>
 
 <body>
-  
-  <div class="container">
-    <center><h1>Calculadora de Consumo</h1></center>
-    <form class="" action="index.html" method="post">
-      <div class="row justify-content-md-center">
-        <div class="col-sm-">
-          <div class="form-group">
-            <label>Potência Elétrica: </label>
-            <input id="inputPowerEletric" type="text" class="form-control" value="">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+
+
+
+    <div class="container-fluid">
+
+      <div>
+        <div class="container" style="background-color: rgb(233, 233, 233);">
+          <h3 class="">Calculadora de Consumo</h3>
+          <form class="" action="index.html" method="post">
+
+
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label>Nome</label>
+                <input id="inputDeviceName" type="text" class="form-control" value="">
+              </div>
+              <div class="form-group col-md-2 ">
+                <label>Quantidade</label>
+                <input id="inputAmountDevices" type="number" class="form-control" value="">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label>Potência Elétrica</label>
+                <!-- <input id="inputPowerEletric" type="text" class="form-control" value=""> -->
+                <input type="range" class="form-control-range" id="inputPowerEletric">
+              </div>
+              <div class="form-group col-md-2">
+                <br>
+                <select id="" class="form-control">
+                  <option selected value="">Watts</option>
+                  <option value="">KWatts</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>Uso médio por dia</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Horas</button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Horas</a>
+                      <a class="dropdown-item" href="#">Minutos</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div role="separator" class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group col-md-3">
+                <label>Período de Consumo</label>
+                <input id="inputPeriod" type="text" class="form-control" value="">
+              </div>
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label>Empresa de Energia</label>
+                <select id="cbLocation" class="form-control" onmousedown="this.value='';"
+                  onchange="calculate(this.value);" ">
+                  <option disabled selected style="display: none;"></option>
+                </select>
+              </div>
+            </div>
+
+          </form>
+
+        </div> <!-- calculator -->
+
+        <div>
+          <div>
+
+            <h2 class="text-center" id=" resultText " style=" display: none "></h2>
+
           </div>
-          <div class="form-group">
-            <label>Quantidade: </label>
-            <input id="inputAmountDevices" type="text" class="form-control" value="">
-          </div>
-          <div class="form-group">
-            <label>Tempo Médio de Uso em 1 dia(horas): </label>
-            <input id="inputUseDuration" type="text" class="form-control" value="">
-          </div>
-          <div class="form-group">
-            <label>Período de Consumo: </label>
-            <input id="inputPeriod" type="text" class="form-control" value="">
-          </div>
-          <div class="form-group">
-            <label>Empresa de Energia: </label>
-            <select id="cbLocation" class="form-control" onmousedown="this.value='';" onchange="calculate(this.value);"">
-              <option selected>...</option>
-            </select>
-          </div>
+          <table class=" table table-striped " id=" resultTable " style=" display: none ">
+            <thead>
+              <tr>
+                <th scope=" col "></th>
+                <th scope=" col ">Nome</th>
+                <th scope=" col ">Consumo Elétrico</th>
+                <th scope=" col ">Custo</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
         </div>
-      </div> 
-    </form>
-    <center><h2 id="resultText"></h2></center>
+      </div><!-- results -->
+
+      <div class="container" style="background-color: red;">
+        <h3>About</h3>
+      </div><!-- about -->
+    </div>
+    <!--container-->
 
 
-    <table class="table" id="resultTable">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Nome</th>
-          <th scope="col">Consumo Elétrico</th>
-          <th scope="col">Custo</th>
-        </tr>
-      </thead>
-      <tbody>
-        
-      </tbody>
-    </table>
+    <footer class=" container py-5 ">
+      <div class=" row ">
+        <div class=" col-12 col-md ">
+          <svg xmlns=" http://www.w3.org/2000/svg " width=" 24 " height=" 24 " fill=" none " stroke=" currentColor "
+            stroke-linecap=" round " stroke-linejoin=" round " stroke-width=" 2 " class=" d-block mb-2 " role=" img "
+            viewBox=" 0 0 24 24 " focusable=" false ">
+            <title>Product</title>
+            <circle cx=" 12 " cy=" 12 " r=" 10 "></circle>
+            <path d=" M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74
+                  9.94 ">
+            </path>
+          </svg>
+          <small class=" d-block mb-3 text-muted ">© 2017-2020</small>
+        </div>
+        <div class=" col-6 col-md ">
+          <h5>Features</h5>
+          <ul class=" list-unstyled text-small ">
+            <li><a class=" text-muted " href=" # ">Cool stuff</a></li>
+            <li><a class=" text-muted " href=" # ">Random feature</a></li>
+            <li><a class=" text-muted " href=" # ">Team feature</a></li>
+            <li><a class=" text-muted " href=" # ">Stuff for developers</a></li>
+            <li><a class=" text-muted " href=" # ">Another one</a></li>
+            <li><a class=" text-muted " href=" # ">Last time</a></li>
+          </ul>
+        </div>
+        <div class=" col-6 col-md ">
+          <h5>Resources</h5>
+          <ul class=" list-unstyled text-small ">
+            <li><a class=" text-muted " href=" # ">Resource</a></li>
+            <li><a class=" text-muted " href=" # ">Resource name</a></li>
+            <li><a class=" text-muted " href=" # ">Another resource</a></li>
+            <li><a class=" text-muted " href=" # ">Final resource</a></li>
+          </ul>
+        </div>
+        <div class=" col-6 col-md ">
+          <h5>Resources</h5>
+          <ul class=" list-unstyled text-small ">
+            <li><a class=" text-muted " href=" # ">Business</a></li>
+            <li><a class=" text-muted " href=" # ">Education</a></li>
+            <li><a class=" text-muted " href=" # ">Government</a></li>
+            <li><a class=" text-muted " href=" # ">Gaming</a></li>
+          </ul>
+        </div>
+        <div class=" col-6 col-md ">
+          <h5>About</h5>
+          <ul class=" list-unstyled text-small ">
+            <li><a class=" text-muted " href=" # ">Team</a></li>
+            <li><a class=" text-muted " href=" # ">Locations</a></li>
+            <li><a class=" text-muted " href=" # ">Privacy</a></li>
+            <li><a class=" text-muted " href=" # ">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
 
-  </div>
 
 
 
-
-
-  <!-- js -->
-  <script src="public/js/jquery.js"></script>
-  <script src="public/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="main.js"></script>
+    <!-- js -->
+    <script src=" public/js/jquery.js "></script>
+    <script src=" public/js/bootstrap.min.js "></script>
+    <script src=" https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js "></script>
+    <script src=" main.js "></script>
 </body>
 
 </html>
