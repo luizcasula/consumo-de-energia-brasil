@@ -2,7 +2,7 @@
 
 // console.log(data);
 
-const cbLocationElement = document.getElementById('cbLocation');
+const cbPowerSupply = document.getElementById('cbLocation');
 const inputPowerEletric = document.getElementById('inputPowerEletric');
 const inputAmountDevices = document.getElementById('inputAmountDevices');
 const inputUseDuration = document.getElementById('inputUseDuration');
@@ -24,7 +24,7 @@ axios.get('./public/data.json').then(
             locationItem.setAttribute('value', element.ideTarifaFornecimento);
             var locationText = document.createTextNode(element.sigDistribuidora);
             locationItem.appendChild(locationText);
-            cbLocationElement.appendChild(locationItem);
+            cbPowerSupply.appendChild(locationItem);
         });
     }
 ).catch(
@@ -34,16 +34,8 @@ axios.get('./public/data.json').then(
     }
 );
 
-
-function calculate(id) {
-    
-    var powerEletric = inputPowerEletric.value;
-    var amountDevices = inputAmountDevices.value;
-    var useDuration = inputUseDuration.value;
-    var period = inputPeriod.value;
-    var deviceName = inputDeviceName.value;
-    var tariff = null;
-
+var tariff = null;
+function setTarrif(id){
     data.forEach(
         element => {
             if (element.ideTarifaFornecimento == id) {
@@ -52,6 +44,18 @@ function calculate(id) {
             }
         }
     );
+}
+
+function calculate(id) {
+    
+    var powerEletric = inputPowerEletric.value;
+    var amountDevices = inputAmountDevices.value;
+    var useDuration = inputUseDuration.value;
+    var period = inputPeriod.value;
+    var deviceName = inputDeviceName.value;
+    
+
+    
 
     var kw = (amountDevices * powerEletric * useDuration * period) / 1000;
     console.log(kw + " kw");
@@ -103,6 +107,5 @@ function calculate(id) {
     resultTable.appendChild(resultRow);
 
     countTable++;
-
 }
 
