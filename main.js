@@ -11,6 +11,13 @@ const inputDeviceName = document.getElementById('inputDeviceName');
 const resultText = document.getElementById('resultText');
 const resultTable = document.getElementById('resultTable');
 const resultTbody = document.getElementsByTagName('tbody')[0];
+const displayRange = document.getElementById('displayRange');
+
+
+
+inputPowerEletric.addEventListener('input', function () {
+    displayRange.textContent = this.value;
+});
 
 var countTable = 1;
 
@@ -34,8 +41,9 @@ axios.get('./public/data.json').then(
     }
 );
 
+
 var tariff = null;
-function setTarrif(id){
+function setTarrif(id) {
     data.forEach(
         element => {
             if (element.ideTarifaFornecimento == id) {
@@ -44,18 +52,19 @@ function setTarrif(id){
             }
         }
     );
+    // console.log(tariff);
 }
 
-function calculate(id) {
-    
+function calculate() {
+
     var powerEletric = inputPowerEletric.value;
     var amountDevices = inputAmountDevices.value;
     var useDuration = inputUseDuration.value;
     var period = inputPeriod.value;
     var deviceName = inputDeviceName.value;
-    
 
-    
+
+
 
     var kw = (amountDevices * powerEletric * useDuration * period) / 1000;
     console.log(kw + " kw");
@@ -82,13 +91,13 @@ function calculate(id) {
 
     var resultName = document.createElement('td');
     var resultNameText;
-    
-    if(deviceName !== ''){
+
+    if (deviceName !== '') {
         resultNameText = document.createTextNode(deviceName);
-    }else{
+    } else {
         resultNameText = document.createTextNode("-");
     }
-    
+
     resultName.appendChild(resultNameText);
 
     var resultElectricalConsumption = document.createElement('td');
@@ -97,8 +106,8 @@ function calculate(id) {
 
     var resultCost = document.createElement('td');
     resultCost.appendChild(costText);
-    
-    
+
+
     resultRow.appendChild(tableCount);
     resultRow.appendChild(resultName);
     resultRow.appendChild(resultElectricalConsumption);
@@ -109,3 +118,7 @@ function calculate(id) {
     countTable++;
 }
 
+
+function print(value) {
+    console.log(value);
+}

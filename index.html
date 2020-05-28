@@ -19,7 +19,7 @@
         <h3 class="">Calculadora de Consumo</h3>
         <form class="" action="index.html" method="post">
 
- 
+
           <div class="form-row">
             <div class="form-group col-md-5">
               <label>Nome</label>
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group col-md-2 ">
               <label>Quantidade</label>
-              <input id="inputAmountDevices" type="number" class="form-control" value="">
+              <input id="inputAmountDevices" type="number" min="0" class="form-control" value="">
             </div>
           </div>
 
@@ -35,8 +35,9 @@
             <div class="form-group col-md-5">
               <label>Potência Elétrica</label>
               <!-- <input id="inputPowerEletric" type="text" class="form-control" value=""> -->
-              <input type="range" class="form-control-range" id="inputPowerEletric">
-              <center><label id="labelPowerEletric"></label></center>
+              <input type="range" class="form-control-range" id="inputPowerEletric" value="500" min="0" max="1000"
+                step="1">
+              <center><span id="displayRange">500</span></center>
             </div>
             <div class="form-group col-md-2">
               <br>
@@ -50,7 +51,7 @@
           <div class="form-row">
             <div class="form-group col-md-2">
               <label>Uso médio por dia</label>
-              <input type="text" class="form-control" placeholder="" aria-label="Recipient's username">
+              <input type="number" min="0" class="form-control" placeholder="" aria-label="Recipient's username">
             </div>
 
             <div class="form-group col-md-2">
@@ -63,7 +64,13 @@
 
             <div class="form-group col-md-3">
               <label>Período de Consumo</label>
-              <input id="inputPeriod" type="text" class="form-control" value="">
+              <div class="input-group">
+                <input id="inputPeriod" type="number" min="0" class="form-control" value="">
+                <div class="input-group-append">
+                  <span class="input-group-text">Dias</span>
+                </div>
+              </div>
+
             </div>
 
           </div>
@@ -72,15 +79,18 @@
             <div class="form-group col-md-3">
               <label>Empresa de Energia</label>
               <select id="cbLocation" class="form-control" onmousedown="this.value='';"
-                onchange="setTarrif(this.value);" ">
-                  <option disabled selected style=" display: none;"></option>
+                onchange="setTarrif(this.value);">
+                <option disabled selected style=" display: none;"></option>
               </select>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-3">
-              <button type="submit" class="btn btn-primary" onclick="calculate()">Calcular</button>
+              <button id="submitButton" type="submit" class="btn btn-primary" onclick="calculate()">Calcular</button>
+            </div>
+            <div class="col-md-3">
+              <h2 class="text-center" id="resultText"></h2>
             </div>
           </div>
 
@@ -92,7 +102,7 @@
       <div class="container" style="height: 800px; background-color: rgb(230, 230, 230);">
         <div>
 
-          <h2 class="text-center" id=" resultText"></h2>
+          <!-- <h2 class="text-center" id=" resultText"></h2> -->
 
         </div>
         <table class=" table table-striped" id=" resultTable ">
@@ -109,6 +119,8 @@
         </table>
       </div>
       <!-- results -->
+
+
       <br>
       <div class="container" style="height:500px; background-color: red;">
         <h3>About</h3>
