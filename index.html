@@ -6,6 +6,13 @@
   <title>Trabalho de Física</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  
+  <style>
+    #aboutText p{
+      text-align: justify;
+    }
+  </style>
+    
 </head>
 
 <body>
@@ -15,7 +22,7 @@
     <div class="container-fluid">
 
       <div class="container">
-        <!-- style="background-color: rgb(233, 233, 233);" -->
+
         <h3 class="">Calculadora de Consumo</h3>
         <form class="" action="index.html" method="post">
 
@@ -27,7 +34,7 @@
             </div>
             <div class="form-group col-md-2 ">
               <label>Quantidade</label>
-              <input id="inputAmountDevices" type="number" min="0" class="form-control" value="">
+              <input id="inputAmountDevices" type="number" min="1" class="form-control" value="">
             </div>
           </div>
 
@@ -51,7 +58,7 @@
           <div class="form-row">
             <div class="form-group col-md-2">
               <label>Uso médio por dia</label>
-              <input type="number" min="0" class="form-control" placeholder="" aria-label="Recipient's username">
+              <input type="number" min="1" class="form-control" placeholder="">
             </div>
 
             <div class="form-group col-md-2">
@@ -65,7 +72,7 @@
             <div class="form-group col-md-3">
               <label>Período de Consumo</label>
               <div class="input-group">
-                <input id="inputPeriod" type="number" min="0" class="form-control" value="">
+                <input id="inputPeriod" type="number" min="1" class="form-control" value="">
                 <div class="input-group-append">
                   <span class="input-group-text">Dias</span>
                 </div>
@@ -122,8 +129,59 @@
 
 
       <br>
-      <div class="container" style="height:500px; background-color: red;">
+      <div class="container" style="Background-color: red;">
         <h3>About</h3>
+        <div id="aboutText">
+          <div>
+            <h4>Consumo de Energia</h4>
+            <p>
+              Na realidade moderna a energia elétrica é um dos consumos mais universais para a população, porém ainda
+              assim a maioria dos consumidores não conhecem o sistema de cobrança das empresas que oferecem esse
+              serviço.
+              Conhecimento a respeito do funcionamento dos variantes para cálculo do valor de energia é necessário para
+              que seja aplicado um consumo consciente e econômico do recurso, então afinal como ocorre o processo?
+            </p>
+            <p>
+              A potência elétrica é uma das grandezas aplicadas no processo, esta expressa numericamente a quantidade de
+              energia elétrica usada por equipamento específico para seu funcionamento, é informada em Watts (W) ou
+              Quilowatts (KW) nas especificações de cada eletrodoméstico. Igualmente relevante é o período de tempo em
+              que
+              os objetos consumidores de energia ficam em uso, e a tarifa aplicada àquela região e caso específico.
+              Multiplicando a potência elétrica em KW pelo período de tempo em horas se obtém o consumo de energia
+              daquele
+              aparelho durante aquele intervalo em KWh, assim facilmente aplica-se uma tarifa de 0,xx R$/KWh e chegamos
+              ao
+              valor em reais que deve ser pago pelo esse consumidor.
+            </p>
+          </div>
+          <div>
+            <h4>O simulador</h4>
+            <ul>
+              <li>
+                <p>
+                  São inseridos pelo usuário a potência elétrica (W), a quantidade de aparelhos referentes à potência
+                  informada, tempo aproximado de uso diário do(s) aparelho(s) em horas, e o período de dias faturados em
+                  questão. Por fim, é selecionada a empresa de fornecimento de energia da região, o sistema de cálculo
+                  funciona com os dados mais recentes encontrados de tarifas residenciais e convencionais aplicadas
+                  pelas diferentes regiões do país.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Com os dados informados o simulador converte a potência elétrica em KW, encontra o consumo mensal e
+                  aplica a tarifa correspondente à empresa selecionada, assim retorna o valor do consumo em reais.
+                </p>
+              </li>
+              <li>
+                <p>
+                  É possível utilizar o sistema para calcular o consumo total de uma residência, aplicando dados de cada
+                  um dos eletrodomésticos e salvando os retornos em uma tabela para somar o valor total da conta de
+                  energia naquele período.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div><!-- about -->
     </div>
     <!--container-->
