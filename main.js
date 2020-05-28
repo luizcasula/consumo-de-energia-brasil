@@ -2,15 +2,14 @@
 
 // console.log(data);
 
-const cbPowerSupply = document.getElementById('cbLocation');
+const cbPowerSupply = document.getElementById('cbPowerSupply');
 const inputPowerEletric = document.getElementById('inputPowerEletric');
 const inputAmountDevices = document.getElementById('inputAmountDevices');
 const inputUseDuration = document.getElementById('inputUseDuration');
 const inputPeriod = document.getElementById('inputPeriod');
 const inputDeviceName = document.getElementById('inputDeviceName');
 const resultText = document.getElementById('resultText');
-const resultTable = document.getElementById('resultTable');
-const resultTbody = document.getElementsByTagName('tbody')[0];
+const resultTable = document.getElementsByTagName('tbody')[0];
 const displayRange = document.getElementById('displayRange');
 
 
@@ -42,83 +41,82 @@ axios.get('./public/data.json').then(
 );
 
 
-var tariff = null;
-function setTarrif(id) {
+function calculate() {
+
+    var powerEletric = inputPowerEletric.value;
+    var amountDevices =inputAmountDevices.value;
+    var useDuration = inputUseDuration.value;
+    var period = inputPeriod.value;
+    var deviceName = inputDeviceName.value;
+    var id = cbPowerSupply.value;
+
+    var tariff = null;
+
     data.forEach(
         element => {
             if (element.ideTarifaFornecimento == id) {
                 tariff = element.vlrTotaTRFConvencional;
-                return;
             }
         }
     );
-    // console.log(tariff);
-}
 
-function calculate() {
+    if (tariff !== null) {
+        var kw = (amountDevices * powerEletric * useDuration * period) / 1000;
+        console.log(kw + " kw");
 
-    var powerEletric = inputPowerEletric.value;
-    var amountDevices = inputAmountDevices.value;
-    var useDuration = inputUseDuration.value;
-    var period = inputPeriod.value;
-    var deviceName = inputDeviceName.value;
+        cost = kw * tariff;
 
+        var kw = (amountDevices * powerEletric * useDuration * period) / 1000;
+        console.log(kw + " kw");
 
+        cost = kw * tariff;
 
+        var costFormatted = cost.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 
-    var kw = (amountDevices * powerEletric * useDuration * period) / 1000;
-    console.log(kw + " kw");
+        resultText.style.display = 'block';
+        resultText.textContent = "";
 
-    cost = kw * tariff;
+        resultText.textContent = costFormatted
+        console.log(cost);
 
-    var costFormatted = cost.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+        // style="display: none"
+        // resultTable.style.display = 'block';
+        var resultRow = document.createElement('tr');
 
-
-    resultText.textContent = "";
-
-    var costText = document.createTextNode(costFormatted);
-    resultText.appendChild(costText);
-    console.log(cost);
-
-    // style="display: none"
-    resultTable.style.display = 'block';
-    var resultRow = document.createElement('tr');
-
-    var tableCount = document.createElement('th');
-    var tableCountText = document.createTextNode(countTable);
-    tableCount.appendChild(tableCountText);
+        var tableCount = document.createElement('th');
+        var tableCountText = document.createTextNode(countTable);
+        tableCount.appendChild(tableCountText);
 
 
-    var resultName = document.createElement('td');
-    var resultNameText;
+        var resultName = document.createElement('td');
+        var resultNameText;
 
-    if (deviceName !== '') {
-        resultNameText = document.createTextNode(deviceName);
-    } else {
-        resultNameText = document.createTextNode("-");
+        if (deviceName !== '') {
+            resultNameText = document.createTextNode(deviceName);
+        } else {
+            resultNameText = document.createTextNode("-");
+        }
+
+        resultName.appendChild(resultNameText);
+
+        var resultElectricalConsumption = document.createElement('td');
+        var resultElectricalConsumptionText = document.createTextNode(kw + " kw");
+        resultElectricalConsumption.appendChild(resultElectricalConsumptionText);
+
+        var resultCost = document.createElement('td');
+        resultCost.appendChild(document.createTextNode(costFormatted));
+
+
+        resultRow.appendChild(tableCount);
+        resultRow.appendChild(resultName);
+        resultRow.appendChild(resultElectricalConsumption);
+        resultRow.appendChild(resultCost);
+
+        resultTable.appendChild(resultRow);
+
+        countTable++;
     }
 
-    resultName.appendChild(resultNameText);
-
-    var resultElectricalConsumption = document.createElement('td');
-    var resultElectricalConsumptionText = document.createTextNode(kw + " kw");
-    resultElectricalConsumption.appendChild(resultElectricalConsumptionText);
-
-    var resultCost = document.createElement('td');
-    resultCost.appendChild(costText);
 
 
-    resultRow.appendChild(tableCount);
-    resultRow.appendChild(resultName);
-    resultRow.appendChild(resultElectricalConsumption);
-    resultRow.appendChild(resultCost);
-
-    resultTable.appendChild(resultRow);
-
-    countTable++;
-}
-
-
-function print(value) {
-    console.log(value);
 }

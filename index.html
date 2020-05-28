@@ -6,13 +6,13 @@
   <title>Trabalho de Física</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  
+
   <style>
-    #aboutText p{
+    #aboutText p {
       text-align: justify;
     }
   </style>
-    
+
 </head>
 
 <body>
@@ -24,7 +24,7 @@
       <div class="container">
 
         <h3 class="">Calculadora de Consumo</h3>
-        <form class="" action="index.html" method="post">
+        <form>
 
 
           <div class="form-row">
@@ -58,7 +58,7 @@
           <div class="form-row">
             <div class="form-group col-md-2">
               <label>Uso médio por dia</label>
-              <input type="number" min="1" class="form-control" placeholder="">
+              <input id="inputUseDuration" type="number" min="1" class="form-control">
             </div>
 
             <div class="form-group col-md-2">
@@ -72,39 +72,39 @@
             <div class="form-group col-md-3">
               <label>Período de Consumo</label>
               <div class="input-group">
-                <input id="inputPeriod" type="number" min="1" class="form-control" value="">
+                <input id="inputPeriod" type="number" min="1" class="form-control">
                 <div class="input-group-append">
                   <span class="input-group-text">Dias</span>
                 </div>
               </div>
-
             </div>
-
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-3">
               <label>Empresa de Energia</label>
-              <select id="cbLocation" class="form-control" onmousedown="this.value='';"
-                onchange="setTarrif(this.value);">
+              <select id="cbPowerSupply" class="form-control" onmousedown="this.value='';">
                 <option disabled selected style=" display: none;"></option>
               </select>
             </div>
           </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-3">
-              <button id="submitButton" type="submit" class="btn btn-primary" onclick="calculate()">Calcular</button>
-            </div>
-            <div class="col-md-3">
-              <h2 class="text-center" id="resultText"></h2>
-            </div>
-          </div>
-
         </form>
+
+        <div class="row">
+          <div class="col-md-3">
+            <button id="submitButton" class="btn btn-primary" onclick="calculate()">Calcular</button>
+          </div>
+          <div class="col-md-3">
+            <!-- <h2 class="text-center" id="resultText">teste</h2> -->
+            <h2 class="text-center" id="resultText" style="display: none;"></h2>
+          </div>
+        </div>
+        
         <hr>
       </div> <!-- calculator -->
 
+      
+      
 
       <div class="container" style="height: 800px; background-color: rgb(230, 230, 230);">
         <div>
@@ -112,14 +112,14 @@
           <!-- <h2 class="text-center" id=" resultText"></h2> -->
 
         </div>
-        <table class=" table table-striped" id=" resultTable ">
+        <table class=" table table-striped" id="resultTable">
           <!-- style=" display: none " -->
           <thead>
             <tr>
-              <th scope=" col ">#</th>
-              <th scope=" col ">Nome</th>
-              <th scope=" col ">Consumo Elétrico</th>
-              <th scope=" col ">Custo</th>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Consumo Elétrico</th>
+              <th>Custo</th>
             </tr>
           </thead>
           <tbody></tbody>
