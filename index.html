@@ -6,11 +6,19 @@
   <title>Trabalho de Física</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     #aboutText p {
       text-align: justify;
     }
+
+    .removeButton {
+      background-color: Transparent;
+      background-repeat: no-repeat;
+      border: none;
+      color: red;
+    }
+
   </style>
 
 </head>
@@ -18,12 +26,11 @@
 <body>
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-
     <div class="container-fluid">
 
       <div class="container">
 
-        <h3 class="">Calculadora de Consumo</h3>
+        <h1>Calculadora de Consumo</h1>
         <form>
 
 
@@ -41,31 +48,34 @@
           <div class="form-row">
             <div class="form-group col-md-5">
               <label>Potência Elétrica</label>
-              <!-- <input id="inputPowerEletric" type="text" class="form-control" value=""> -->
-              <input type="range" class="form-control-range" id="inputPowerEletric" value="500" min="0" max="1000"
-                step="1">
-              <center><span id="displayRange">500</span></center>
+              <input type="range" class="form-control-range" id="inputPowerEletric" value="50" min="0" max="100"
+                step="0.5" oninput="displayRange.value=value" onchange="displayRange.value=value">
+              <!-- <center><span id="displayRange">50</span></center> -->
+              <center><input type="number" class="form-control-sm" id="displayRange" min="1"
+                  style="border: none; text-align: center;"></input></center>
             </div>
             <div class="form-group col-md-2">
               <br>
-              <select id="" class="form-control">
-                <option selected value="">Watts</option>
-                <option value="">KWatts</option>
+              <select id="cbPowerEletricScale" class="form-control" onmousedown="this.value='';">
+                <option selected>Watts</option>
+                <option>Kilo Watts</option>
+                <option>Mega Watts</option>
               </select>
             </div>
           </div>
 
           <div class="form-row">
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-2" style="padding-right: 0px;">
               <label>Uso médio por dia</label>
               <input id="inputUseDuration" type="number" min="1" class="form-control">
             </div>
 
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-2" style="padding-left: 0px;">
               <br>
-              <select name="" id="" class="form-control">
-                <option value="" selected>Horas</option>
-                <option value="">Minutos</option>
+              <select id="cbTimeUseType" style="margin-top: 8px; " class="form-control" onmousedown="this.value='';">
+                <option selected>Horas</option>
+                <option>Minutos</option>~
+                <option>Segundos</option>
               </select>
             </div>
 
@@ -99,30 +109,37 @@
             <h2 class="text-center" id="resultText" style="display: none;"></h2>
           </div>
         </div>
-        
+
         <hr>
       </div> <!-- calculator -->
 
-      
-      
 
-      <div class="container" style="height: 800px; background-color: rgb(230, 230, 230);">
+
+
+      <div class="container" style="height: 800px">
         <div>
-
-          <!-- <h2 class="text-center" id=" resultText"></h2> -->
+          <br><br>
+          <!-- <h2 class="text-center" id=""></h2> -->
+          <h3>Resultados</h3>
 
         </div>
         <table class=" table table-striped" id="resultTable">
           <!-- style=" display: none " -->
           <thead>
             <tr>
-              <th>#</th>
+              <th></th>
               <th>Nome</th>
+              <th>Quantidade</th>
+              <th>Uso médio por dia</th>
               <th>Consumo Elétrico</th>
+              <th>Período de Uso</th>
+              <th>Fornecedora</th>
               <th>Custo</th>
+              <th></th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+          </tbody>
         </table>
       </div>
       <!-- results -->
