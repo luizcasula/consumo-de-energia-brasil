@@ -11,7 +11,7 @@
     html {
       scroll-behavior: smooth;
     }
-  
+
     footer li {
       display: inline-block;
       padding-left: 12px;
@@ -68,7 +68,7 @@
           <h1>Calcule o consumo da sua eletrecidade!</h1>
         </div>
 
-        <form>
+        <form class="main-form needs-validation" novalidate>
           <div class="form-row">
             <div class="form-group col-md-5">
               <label>Nome</label>
@@ -155,7 +155,7 @@
       <div class="container" style="margin-top: 100px;height: 800px">
         <div>
           <!-- <h2 class="text-center" id=""></h2> -->
-          <h2>Resultados</h2>
+          <h2 style="padding-bottom: 8px;">Resultados</h2>
 
         </div>
         <table class=" table table-striped" id="resultTable">
@@ -186,7 +186,7 @@
         <h2>Sobre</h2>
         <div id="aboutText">
           <div>
-            <h4>Consumo de Energia</h4>
+            <h4>Consumo de Energia Elétrica</h4>
             <p>
               Na realidade moderna a energia elétrica é um dos consumos mais universais para a população, porém ainda
               assim a maioria dos consumidores não conhecem o sistema de cobrança das empresas que oferecem esse
@@ -248,7 +248,6 @@
           <li><a class=" text-muted " href="https://github.com/luizcasula/site-fisica" style="text-decoration:none"><img
                 src="./public/assets/github-icon.png" id="githubIcon"> GitHub</a></li>
           <li><small class=" d-block mb-3 text-muted ">© 2020</small></li>
-
         </ul>
       </div>
     </div>
@@ -269,6 +268,17 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
   <script src=" main.js "></script>
+  <script>
+    var form = document.querySelector('.needs-validation');
+
+    form.addEventListener('submit', function (event) {
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    })
+  </script>
 </body>
 
 </html>
