@@ -104,7 +104,7 @@ function calculate() {
                 'deviceName': deviceName,
                 'amountDevices': amountDevices,
                 'useDuration': useDurationNotParsed + ' ' + timeUseType,
-                'electricalConsumption': electricalConsumption,
+                'electricalConsumption': electricalConsumption.toFixed(2),
                 'period': period,
                 'powerSupply': powerSupply,
                 'cost': costFormatted
