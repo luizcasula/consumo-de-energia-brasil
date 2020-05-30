@@ -19,7 +19,7 @@ inputPowerEletric.addEventListener('input', function () {
     displayRange.textContent = this.value;
 });
 
-
+//fornecedoras
 axios.get('./public/data.json').then(
     function (response) {
         data = response.data;
@@ -49,7 +49,8 @@ function calculate() {
     var powerSupply;
     var tariff = null;
 
-
+    //fornecedora by id
+    axios.get('').then('').catch();
 
     data.forEach(
         element => {
