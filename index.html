@@ -11,7 +11,6 @@
     html {
       scroll-behavior: smooth;
     }
-
     footer li {
       display: inline-block;
       padding-left: 12px;
@@ -74,7 +73,7 @@
               <label>Nome</label>
               <input id="inputDeviceName" type="text" class="form-control" value="" placeholder="Ex: Geladeira">
             </div>
-            <div class="form-group col-md-2 ">
+            <div class="form-group col-md-2">
               <label>Quantidade</label>
               <input id="inputAmountDevices" type="number" min="1" class="form-control" value="">
             </div>
@@ -83,11 +82,11 @@
           <div class="form-row">
             <div class="form-group col-md-5">
               <label>Potência Elétrica</label>
-              <input type="range" class="form-control-range" id="inputPowerEletric" value="50" min="0" max="100"
+              <input type="range" class="form-control-range" id="inputPowerEletric" value="50" min="1" max="100"
                 step="0.5" oninput="displayRange.value=value" onchange="displayRange.value=value">
-              <!-- <center><span id="displayRange">50</span></center> -->
-              <center><input type="number" class="form-control-sm" id="displayRange" min="1"
-                  style="border: none; text-align: center;"></input></center>
+              
+              <center><input type="number" class="form-control form-control-sm" id="displayRange" min="1"
+                  style=" text-align: center; width: 100px;" onchange="inputPowerEletric.value=value"></input></center>
             </div>
             <div class="form-group col-md-2">
               <br>
@@ -204,7 +203,7 @@
               daquele
               aparelho durante aquele intervalo em KWh, assim facilmente aplica-se uma tarifa de 0,xx R$/KWh e chegamos
               ao
-              valor em reais que deve ser pago pelo esse consumidor.
+              valor em reais que deve ser pago por esse consumidor.
             </p>
           </div>
           <div>
@@ -245,8 +244,8 @@
     <div class=" row ">
       <div class=" col-6 col-md ">
         <ul class=" list-unstyled text-small">
-          <li><a class=" text-muted " href="https://github.com/luizcasula/consumo-de-energia-brasil" style="text-decoration:none"><img
-                src="./public/assets/github-icon.png" id="githubIcon"> GitHub</a></li>
+          <li><a class=" text-muted " href="https://github.com/luizcasula/consumo-de-energia-brasil"
+              style="text-decoration:none"><img src="./public/assets/github-icon.png" id="githubIcon"> GitHub</a></li>
           <li><small class=" d-block mb-3 text-muted ">© 2020</small></li>
         </ul>
       </div>
