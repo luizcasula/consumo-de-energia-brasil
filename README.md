@@ -3,6 +3,7 @@
 
 Aplicação desenvolvida para calcular o consumo de energia elétrica aproximada, com base no tempo de uso, potência dos aparelhos e o preço das tarifas de cada região do país. O site foi utilizado como objeto de trabalho aprensentado para a disciplina de física.
 
+Para acessar a versão em produção basta [clicar aqui.](https://luizcasula.github.io/consumo-de-energia-brasil/)
 
 ## 🚀 Tecnologias
 
