@@ -38,7 +38,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 
 ## 📃 License
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/luizcasula/consumo-de-energia-brasil/blob/master/LICENSE) para mais detalhes.
 
 ---
 
